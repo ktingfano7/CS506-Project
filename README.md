@@ -1,6 +1,6 @@
 # CS506-Project
 
-Music Recommendation Model Proposal (TBD)
+## Music Recommendation Model Proposal (TBD)
 
 **Project Overview:**
 
