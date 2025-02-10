@@ -21,6 +21,6 @@ What will the model do:
 **Data Visualization:**
 We will create an interactive visualization that dynamically demonstrates how a song is found using K-Nearest Neighbors (KNN).  
 
-Test & Evaluation Plan
+**Test & Evaluation Plan:**
 
 
