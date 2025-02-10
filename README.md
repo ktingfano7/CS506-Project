@@ -3,6 +3,7 @@
 ## Music Recommendation Model Proposal
 
 **Project Overview:**
+We propose a system that will recommend songs to the user based on the categories of the songs that they have listened to, such as genre and artist. Using data taken from the Spotify API, the application will recommend 15 to 20 songs at a time, as well as display a cluster chart - where the songs are gouped via KNN (K-Nearest Neightbors) - that the user can interact with to see which songs share similarities among each other.
 
 **Goals:**
 The goal of this project is to build an interactive music recommendation system using K-Nearest Neighbors (KNN). The system will allow users to select songs and visually see how the algorithm finds the most similar songs based on Spotify audio features.
