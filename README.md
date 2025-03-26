@@ -20,7 +20,7 @@ What will the model do:
 - Show a step-by-step visualization of how the KNN model finds similar songs.
 
 **Data Visualization:**
-We will create an interactive visualization that dynamically demonstrates how a song is found using K-Nearest Neighbors (KNN).  
+We will create an interactive visualization that dynamically demonstrates how a song is found using K-Nearest Neighbors (KNN). Factors that will determine the location of the data points (as well as their proximity to other, "similar" points) include the song's genre, artist, length and so forth. The more of these factors that separate data points share, the closer that they will be to one another on the graph.
 
 **Test & Evaluation Plan:**
 To efficiently test and evaluate the recommendation model, we will use a straightforward approach with data splitting, key evaluation metrics, and a basic implementation:
