@@ -42,6 +42,45 @@ To efficiently test and evaluate the recommendation model, we will use a straigh
    2. Compute Precision@K, Recall@K, and NCDG@K
    3. Weight and average the results for an overall model evaluation
 
+# Midterm Report
+Youtube link for presentation: https://youtu.be/TzdCKnKCzHM
+## Data Processing and Cleaning
+
+We chose to use a **Kaggle dataset** instead of the **Spotify API** primarily because we don’t have a database infrastructure to store large volumes of data returned by the API. If we were to manually select a subset of songs from Spotify, it could introduce bias — for instance, favoring certain genres unintentionally. This would lead to **underfitting** during model evaluation, especially for underrepresented genres or song types.
+
+To avoid that, we selected the [Spotify Tracks Dataset on Kaggle](https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset), which includes around **11,000 tracks** across **125 different genres**. Each track includes multiple audio features such as danceability, energy, acousticness, and more. The data is stored in **CSV format**, making it easy to load, explore, and preprocess.
+
+---
+
+### Cleaning Steps
+
+- **Drop unnecessary columns**:
+  - `Unnamed` index column: redundant since CSV already includes an index.
+  - `track_id`: just a unique identifier, not needed for modeling.
+  - `album_name`: we retain only artist and song name for simplicity.
+
+- **Remove nulls and duplicates**:
+  - Any rows with missing values are removed.
+  - Duplicate songs (i.e., same `artist_name` and `track_name`) are dropped. This accounts for cases where artists release the same song in different albums.
+
+- **Feature Standardization**:
+  - All numerical features used for prediction are scaled to a [0, 1] range. This ensures consistent weighting across features and improves model performance.
+
+- **Genre Encoding**:
+  - The `genre` column (string) is encoded into numeric labels for model training.
+  - We retain the original `genre` column for reference.
+  - A dictionary (`genre_mapping`) is created to map numeric labels back to genre names.  
+    You can print it using:
+    ```python
+    print(genre_mapping.to_string(index=False))
+    ```
+
+---
+
+Feel free to check out the dataset [here](https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset).
+
+
 **Preliminary Results**
 In our data visualization, we have found that certain features in the songs that we've tested have certain attributes have yielded far more accurate results. If we look at the heatmap in "pca_by_popularity", we can see that there is a heavy correlation between certain attributes relative to others. For instance, "valence" and "danceability" have the highest correlation between each other, at 0.48, and in theory should yield the closest results. Whereas using variables such as "popularity" yielded less-similar results, due to many less-popular songs different heavily in style, genre, and other factors. That said, using audio features on their own doesn't yield the most accurate results for recommending similar songs; for instance, applying "valence" and "danceability" alone to "Can't Help Falling in Love" by Kina Grannis gave us recommendations that were far removed from the original song, such as a non-vocal piano piece "Lyric Pieces III" by Edvard Grieg. Pairing the audio features with "genre" in our KNN-features yielded far more accurate results, with recommendations that were more similar to the given songs. (Using "artist" as a KNN-feature led to a lack of variety in the recommendations.) Even with these improvements, the recommendation system offers mixed results when it comes to offering recommendations for individual songs; if we looked at the song's locations on the correllation map, the distance between the songs varied heavily. We still have plenty of cleaning to do; we might end up standarizing the data to account for columns that aren't ranked on a 0-1 scale (such as tempo). Also, we might end up switching to cosine distance to measure the song differences instead of euclidean, as the former method accounts for the direction of the data as well as the length. And we will focus on implementing more nuanced ways of evaluating similarities between songs moving forward. 
+
 
