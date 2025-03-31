@@ -47,25 +47,6 @@ Youtube link for presentation: https://youtu.be/TzdCKnKCzHM
 
 --- 
 
-## Preliminary Visualizations of Data
-
-Here is our chart of the duration distribution, listing the songs by their respective runtimes:
-![Duration Distribution](images/duration_distribution_filtered.png)
-
-Here is the feature correlation heatchart, which gives scores for the correlation in similarity between songs with specific attributes:
-![Feature Correlation](images/duration_distribution_filtered.png)
-
-Here is the PCA by popularity chart, with PC1 weighing more on loudness, energy, and acousticness, and PC2 weighing more on valence, danceability, and duration.
-![PCA by Popularity](images/pca_by_popularity.png)
-
-Here is the distribution of the songs by their popularity scores:
-![Popularity Distribution](images/popularity_distribution.png)
-
-Here is a chart of the top artists, which is determined by their number of tracks:
-![Top Artists](images/top_artists.png)
-
----
-
 ## Data Processing and Cleaning
 
 We chose to use a **Kaggle dataset** instead of the **Spotify API** primarily because we don’t have a database infrastructure to store large volumes of data returned by the API. If we were to manually select a subset of songs from Spotify, it could introduce bias — for instance, favoring certain genres unintentionally. This would lead to **underfitting** during model evaluation, especially for underrepresented genres or song types.
@@ -98,6 +79,26 @@ To avoid that, we selected the [Spotify Tracks Dataset on Kaggle](https://www.ka
     ```
 
 ---
+
+## Preliminary Visualizations of Data
+
+Here is our chart of the duration distribution, listing the songs by their respective runtimes:
+![Duration Distribution](images/duration_distribution_filtered.png)
+
+Here is the feature correlation heatchart, which gives scores for the correlation in similarity between songs with specific attributes:
+![Feature Correlation](images/duration_distribution_filtered.png)
+
+Here is the PCA by popularity chart, with PC1 weighing more on loudness, energy, and acousticness, and PC2 weighing more on valence, danceability, and duration.
+![PCA by Popularity](images/pca_by_popularity.png)
+
+Here is the distribution of the songs by their popularity scores:
+![Popularity Distribution](images/popularity_distribution.png)
+
+Here is a chart of the top artists, which is determined by their number of tracks:
+![Top Artists](images/top_artists.png)
+
+---
+
 
 ## Data Modeling Methods
 We used multiple techniques to model our data. We used bar charts to measure the popularity of the individual artists and songs, based on their number of songs and views respectively. We also used a principal component analysis chart to measure the variance in attributes for the individual songs, with the PC1 weighing the similarity of the songs based on their loudness, energy, and acousticness, and PC2 weighing the similarity of the songs based on their valence, danceability, and duration. This way, we were able to see how close the songs were based on their closeness on the chart, which we used to determine which attributes to use in the actual song recommender. Similarily, the heatmap for Feature Correllation helped us figure out which song features correllated the most in terms of song similarity.
