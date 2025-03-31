@@ -74,11 +74,6 @@ To avoid that, we selected the [Spotify Tracks Dataset on Kaggle](https://www.ka
 
 ---
 
-**Data Modeling Methods**
-We used multiple techniques to model our data. We used bar charts to measure the popularity of the individual artists and songs, based on their number of songs and views respectively. We also used a principal component analysis chart to measure the variance in attributes for the individual songs, with the PC1 weighing the similarity of the songs based on their loudness, energy, and acousticness, and PC2 weighing the similarity of the songs based on their valence, danceability, and duration. This way, we were able to see how close the songs were based on their closeness on the chart, which we used to determine which attributes to use in the actual song recommender. Similarily, the heatmap for Feature Correllation helped us figure out which song features correllated the most in terms of song similarity.
-
----
-
 ### Cleaning Steps
 
 - **Drop unnecessary columns**:
@@ -101,6 +96,11 @@ We used multiple techniques to model our data. We used bar charts to measure the
     ```python
     print(genre_mapping.to_string(index=False))
     ```
+
+---
+
+## Data Modeling Methods
+We used multiple techniques to model our data. We used bar charts to measure the popularity of the individual artists and songs, based on their number of songs and views respectively. We also used a principal component analysis chart to measure the variance in attributes for the individual songs, with the PC1 weighing the similarity of the songs based on their loudness, energy, and acousticness, and PC2 weighing the similarity of the songs based on their valence, danceability, and duration. This way, we were able to see how close the songs were based on their closeness on the chart, which we used to determine which attributes to use in the actual song recommender. Similarily, the heatmap for Feature Correllation helped us figure out which song features correllated the most in terms of song similarity.
 
 ---
 
