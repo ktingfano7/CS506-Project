@@ -44,11 +44,38 @@ To efficiently test and evaluate the recommendation model, we will use a straigh
 
 # Midterm Report
 Youtube link for presentation: https://youtu.be/TzdCKnKCzHM
+
+--- 
+
+## Preliminary Visualizations of Data
+
+Here is our chart of the duration distribution, listing the songs by their respective runtimes:
+![Duration Distribution](images/duration_distribution_filtered.png)
+
+Here is the feature correlation heatchart, which gives scores for the correlation in similarity between songs with specific attributes:
+![Feature Correlation](images/duration_distribution_filtered.png)
+
+Here is the PCA by popularity chart, with PC1 weighing more on loudness, energy, and acousticness, and PC2 weighing more on valence, danceability, and duration.
+![PCA by Popularity](images/pca_by_popularity.png)
+
+Here is the distribution of the songs by their popularity scores:
+![Popularity Distribution](images/popularity_distribution.png)
+
+Here is a chart of the top artists, which is determined by their number of tracks:
+![Top Artists](images/top_artists.png)
+
+---
+
 ## Data Processing and Cleaning
 
 We chose to use a **Kaggle dataset** instead of the **Spotify API** primarily because we don’t have a database infrastructure to store large volumes of data returned by the API. If we were to manually select a subset of songs from Spotify, it could introduce bias — for instance, favoring certain genres unintentionally. This would lead to **underfitting** during model evaluation, especially for underrepresented genres or song types.
 
 To avoid that, we selected the [Spotify Tracks Dataset on Kaggle](https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset), which includes around **11,000 tracks** across **125 different genres**. Each track includes multiple audio features such as danceability, energy, acousticness, and more. The data is stored in **CSV format**, making it easy to load, explore, and preprocess.
+
+---
+
+**Data Modeling Methods**
+We used multiple techniques to model our data. We used bar charts to measure the popularity of the individual artists and songs, based on their number of songs and views respectively. We also used a principal component analysis chart to measure the variance in attributes for the individual songs, with the PC1 weighing the similarity of the songs based on their loudness, energy, and acousticness, and PC2 weighing the similarity of the songs based on their valence, danceability, and duration. This way, we were able to see how close the songs were based on their closeness on the chart, which we used to determine which attributes to use in the actual song recommender. Similarily, the heatmap for Feature Correllation helped us figure out which song features correllated the most in terms of song similarity.
 
 ---
 
@@ -79,5 +106,4 @@ To avoid that, we selected the [Spotify Tracks Dataset on Kaggle](https://www.ka
 
 **Preliminary Results**
 In our data visualization, we have found that certain features in the songs that we've tested have certain attributes have yielded far more accurate results. If we look at the heatmap in "pca_by_popularity", we can see that there is a heavy correlation between certain attributes relative to others. For instance, "valence" and "danceability" have the highest correlation between each other, at 0.48, and in theory should yield the closest results. Whereas using variables such as "popularity" yielded less-similar results, due to many less-popular songs different heavily in style, genre, and other factors. That said, using audio features on their own doesn't yield the most accurate results for recommending similar songs; for instance, applying "valence" and "danceability" alone to "Can't Help Falling in Love" by Kina Grannis gave us recommendations that were far removed from the original song, such as a non-vocal piano piece "Lyric Pieces III" by Edvard Grieg. Pairing the audio features with "genre" in our KNN-features yielded far more accurate results, with recommendations that were more similar to the given songs. (Using "artist" as a KNN-feature led to a lack of variety in the recommendations.) Even with these improvements, the recommendation system offers mixed results when it comes to offering recommendations for individual songs; if we looked at the song's locations on the correllation map, the distance between the songs varied heavily. We still have plenty of cleaning to do; we might end up standarizing the data to account for columns that aren't ranked on a 0-1 scale (such as tempo). Also, we might end up switching to cosine distance to measure the song differences instead of euclidean, as the former method accounts for the direction of the data as well as the length. And we will focus on implementing more nuanced ways of evaluating similarities between songs moving forward. 
-
 
