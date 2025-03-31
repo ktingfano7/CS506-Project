@@ -85,10 +85,12 @@ To avoid that, we selected the [Spotify Tracks Dataset on Kaggle](https://www.ka
 Here is our chart of the duration distribution, listing the songs by their respective runtimes:
 ![Duration Distribution](images/duration_distribution_filtered.png)
 
-Here is the feature correlation heatchart, which gives scores for the correlation in similarity between songs with specific attributes:
-![Feature Correlation](images/duration_distribution_filtered.png)
+Here is the feature correlation heatchart, which gives scores for the correlation in similarity between songs with specific attributes. This helps us identify which attributes are closely correlated. For example, we observe a strong correlation between 'valance' and 'danceability', suggesting that more positive songs tend to be more danceable. These are useful when we apply it to our recommendation model and do Principal Component Analysis (PCA).
+![Feature Correlation](images/feature_correlation.png)
 
-Here is the PCA by popularity chart, with PC1 weighing more on loudness, energy, and acousticness, and PC2 weighing more on valence, danceability, and duration.
+Here is the PCA plot colored by 'popularity'. To better visualize the dataset, we performed a PCA using audio-numerical features (loudness, valance, danceability, etc.). The PCA reduces these dimensions into two components:
+- **PC1** captures the most variance and reflects energy, loudness, and acousticness.
+- **PC2** reflects variation in valence, danceability, and duration.
 ![PCA by Popularity](images/pca_by_popularity.png)
 
 Here is the distribution of the songs by their popularity scores:
@@ -111,3 +113,10 @@ In our data visualization, we have found that certain features in the songs that
 Here is an example of the recommendations that our code gives:
 ![Recommender Results](images/recommender_results.png)
 
+### Tools and Libraries Used
+- Pandas
+- NumPy
+- kagglehub
+- Seaborn / Matplotlib
+- scikit-learn (for PCA)
+- Jupyter Notebook
