@@ -12,7 +12,7 @@ Once the KNN Song Recommender has loaded, choose an artist, music track, the dis
 
 ## Visualizations of Data
 Here is an interactive graph of the dataset songs colored by their popularity:
-![PCA 3D INTERACTIVE](images/pca_3d_interactive.html)
+![PCA 3D INTERACTIVE](images/https://github.com/ktingfano7/CS506-Project/pca_3d_interactive.html)
 
 Here is a 3D PCA graph of our songs colored by their popularity:
 ![3D PCA graph of popularity](images/pca_3d_rotation.gif)
