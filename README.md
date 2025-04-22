@@ -99,7 +99,6 @@ Then in the browser:
 
 
 
-
 { % include_relative images/pca_3d_interactive.html % } 
 
 Here is the feature correlation heatchart, which gives scores for the correlation in similarity between songs with specific attributes. This helps us identify which attributes are closely correlated. For example, we observe a strong correlation between 'valance' and 'danceability', suggesting that more positive songs tend to be more danceable. These are useful when we apply it to our recommendation model and do Principal Component Analysis (PCA).
@@ -109,6 +108,11 @@ Here is the PCA plot colored by 'popularity'. To better visualize the dataset, w
 - **PC1** captures the most variance and reflects energy, loudness, and acousticness.
 - **PC2** reflects variation in valence, danceability, and duration.
 ![PCA by Popularity](images/pca_by_popularity.png)
+
+
+Here is the PCA plot colored by 'genre'. PC1 and PC2 function similarily to the above graph, but the difference is:
+- **PC3** captures the variance in genre.
+![PCA by Genre](images/pc_3d_rotation.gif)
 
 Here is the distribution of the songs by their popularity scores:
 ![Popularity Distribution](images/popularity_distribution.png)
