@@ -5,7 +5,9 @@
 **How to build and run the code:**
 ![Build Dataset](images/path_rules.png)
 First, go to code.ipynb and change the name in path after "Users/" (as of 4/21, it is called "ko") to whatever your computer's username is. Next, run every block of code in cody.ipynb to clean up the information scraped from the kaggle dataset, and save the cleaned data as "dataset.csv". (If you name the csv something else, you will have to change the name in every file which runs it.)
+
 ![Streamlit Launch](images/streamlit_link.png)
+
 Next, open the project folder in a terminal and run "python app.py", followed by "streamlit run app.py". Finally, click the "Local URL" button that pops up to run the app in a browser.
 ![Streamlit App](images/streamlit_app.png)
 Once the KNN Song Recommender has loaded, choose an artist, music track, the distance metric that you want to use to measure song similarity - we recommend that you use the default choice of cosine, as it measures direction as well as distance, but euclidean and manhattan distance are also listed as options too - and the number of similar song recommendations you want to receive, on a scale of 1 to 20 songs. There is also an option to restrict the songs to the same genre; once you have made your choices, hit the Get Recommendations button to receive the selected number of songs most similar to the one that you chose.
