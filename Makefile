@@ -1,6 +1,5 @@
 .PHONY: all install build run clean
 
-all: install run
 
 install:
 	pip install streamlit
@@ -15,3 +14,5 @@ run:
 
 clean:
 	rm -rf __pycache__ *.pyc
+
+all: install run
