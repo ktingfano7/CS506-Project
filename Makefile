@@ -6,6 +6,7 @@ install:
 	pip install pandas numpy scikit-learn streamlit
 	pip install streamlit
 	pip install jupyter
+	pip install kagglehub
 
 
 build:
