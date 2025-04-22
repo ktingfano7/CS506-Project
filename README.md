@@ -100,7 +100,7 @@ Then in the browser:
 
 
 
-
+{ % include_relative images/pca_3d_interactive.html % } 
 
 Here is the feature correlation heatchart, which gives scores for the correlation in similarity between songs with specific attributes. This helps us identify which attributes are closely correlated. For example, we observe a strong correlation between 'valance' and 'danceability', suggesting that more positive songs tend to be more danceable. These are useful when we apply it to our recommendation model and do Principal Component Analysis (PCA).
 ![Feature Correlation](images/feature_correlation.png)
