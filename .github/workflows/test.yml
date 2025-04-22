@@ -16,8 +16,8 @@ jobs:
 
           - name: Install dependencies 
             run: make all 
-          - name: run the app
-            run: make run
+          - name: test the function
+            run: make test
 
           
           
