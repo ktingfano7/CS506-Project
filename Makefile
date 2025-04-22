@@ -7,7 +7,7 @@ install:
 	pip install streamlit
 	pip install jupyter
 	pip install kagglehub
-	pip install pywin32
+	pip install -r requirements.txt
 
 
 build:
