@@ -15,7 +15,9 @@ jobs:
             uses: actions/checkout@v4
 
           - name: Install dependencies 
-            run: make all run
+            run: make all 
+          - name: run the app
+            run: make run
 
           
           
