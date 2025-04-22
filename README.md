@@ -2,25 +2,105 @@
 
 ## Final Report
 
+# 🎵 Song Recommendation System with KNN
+
+This project is a modular, K-Nearest Neighbors (KNN)-based song recommender system built with Python. It includes:
+
+- **`dataprocess.ipynb`**: Handles data processing, cleaning, and feature scaling.
+- **`recommender.py`**: A CLI tool to recommend similar songs using audio features.
+- **`app.py`**: A Streamlit web application for interactive song recommendations.
+
+---
+
+## 📁 Project Structure
+
+```text
+├── dataprocess.ipynb    # Data processing and feature extraction
+├── recommender.py       # KNN-based recommender via command-line
+├── app.py               # Streamlit front-end for recommendations
+├── dataset.csv          # (Required) Dataset containing audio features
+```
+
+
+
 **How to build and run the code:**
-![Build Dataset](images/path_rules.png)
-First, go to code.ipynb and change the name in path after "Users/" (as of 4/21, it is called "ko") to whatever your computer's username is. Next, run every block of code in cody.ipynb to clean up the information scraped from the kaggle dataset, and save the cleaned data as "dataset.csv". (If you name the csv something else, you will have to change the name in every file which runs it.)
+# 🎵 How to Run and Use the KNN Song Recommendation System
 
-![Streamlit Launch](images/streamlit_link.png)
+This guide explains how to set up and run the KNN-based song recommendation system using both command-line and Streamlit interface.
 
-Next, open the project folder in a terminal and run "python app.py", followed by "streamlit run app.py". Finally, click the "Local URL" button that pops up to run the app in a browser.
-![Streamlit App](images/streamlit_app.png)
-Once the KNN Song Recommender has loaded, choose an artist, music track, the distance metric that you want to use to measure song similarity - we recommend that you use the default choice of cosine, as it measures direction as well as distance, but euclidean and manhattan distance are also listed as options too - and the number of similar song recommendations you want to receive, on a scale of 1 to 20 songs. There is also an option to restrict the songs to the same genre; once you have made your choices, hit the Get Recommendations button to receive the selected number of songs most similar to the one that you chose.
+---
 
-## Visualizations of Data
-Here is an interactive graph of the dataset songs colored by their popularity:
-![PCA 3D INTERACTIVE](images/https://github.com/ktingfano7/CS506-Project/pca_3d_interactive.html)
+## 📁 Project Files
 
-Here is a 3D PCA graph of our songs colored by their popularity:
-![3D PCA graph of popularity](images/pca_3d_rotation.gif)
+- `dataprocess.ipynb`: Jupyter Notebook to process and clean the dataset.
+- `recommender.py`: Python script for command-line based recommendations.
+- `app.py`: Streamlit app for interactive song recommendation.
+- `dataset.csv`: CSV file of audio features (either generated or downloaded).
 
-Here is our chart of the duration distribution, listing the songs by their respective runtimes:
-![Duration Distribution](images/duration_distribution_filtered.png)
+---
+
+## ✅ Requirements
+
+You need Python 3.7 or higher. Install the required dependencies using the following command in Terminal:
+
+``` bash 
+pip install pandas numpy scikit-learn streamlit
+```
+
+
+---
+
+##  Step 1: Prepare the Dataset
+
+Open and run `dataprocess.ipynb` to clean and preprocess your dataset. This notebook should output a cleaned `dataset.csv` file with numeric features and genre codes.
+
+---
+
+##  Step 2: Run from the Command Line
+
+Use `recommender.py` to find similar songs from the terminal:
+
+```bash
+python recommender.py --dataset dataset.csv \
+                      --song "Shape of You" \
+                      --artist "Ed Sheeran" \
+                      --n_songs 5 \
+                      --metric cosine \
+                      --same_genre
+```
+
+
+
+**Arguments:**
+- `--dataset`: Path to the dataset CSV
+- `--song`: Song name (exact match required)
+- `--artist`: Artist name (exact match required)
+- `--n_songs`: Number of similar songs to return
+- `--metric`: Distance metric (`cosine`, `euclidean`, or `manhattan`)
+- `--same_genre`: Optional flag to restrict results to the same genre
+
+---
+
+## Step 3: Use the Streamlit App
+
+To launch the web interface, run:
+
+`streamlit run app.py`
+
+
+Then in the browser:
+- Choose your favorite artist and song from dropdowns
+- Select a distance metric
+- Adjust the number of recommendations
+- Optionally filter by same genre
+- Click "Get Recommendations" to see results in a table
+
+---
+
+
+
+
+
 
 Here is the feature correlation heatchart, which gives scores for the correlation in similarity between songs with specific attributes. This helps us identify which attributes are closely correlated. For example, we observe a strong correlation between 'valance' and 'danceability', suggesting that more positive songs tend to be more danceable. These are useful when we apply it to our recommendation model and do Principal Component Analysis (PCA).
 ![Feature Correlation](images/feature_correlation.png)
