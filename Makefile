@@ -17,6 +17,8 @@ test:
 
 	python recommender.py --dataset dataset.csv  --song "Love Me Like You Do"  --artist "Ellie Goulding"  --n_songs 10  --metric euclidean  --same_genre
 
+	python recommender.py --dataset dataset.csv  --song "Shake It Off"  --artist "Taylor Swift"  --n_songs 15  --metric manhattan
+
 clean:
 	rm -rf __pycache__ *.pyc
 
