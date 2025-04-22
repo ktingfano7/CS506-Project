@@ -5,6 +5,7 @@ install:
 	$(PYTHON) -m pip install --upgrade pip
 	pip install pandas numpy scikit-learn streamlit
 	pip install streamlit
+	pip install jupyter
 
 
 build:
