@@ -63,7 +63,8 @@ Use `recommender.py` to find similar songs from the terminal:
 --artist "Ed Sheeran"
 --n_songs 5
 --metric cosine
---same_genre`
+--same_genre
+`
 
 
 **Arguments:**
