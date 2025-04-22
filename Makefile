@@ -7,6 +7,7 @@ install:
 	pip install streamlit
 	pip install jupyter
 	pip install kagglehub
+	pip install pywin32
 
 
 build:
