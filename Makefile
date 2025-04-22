@@ -4,7 +4,6 @@
 install:
 	$(PYTHON) -m pip install --upgrade pip
 	pip install pandas numpy scikit-learn streamlit
-	pip install -r requirements.txt
 	pip install streamlit
 
 
