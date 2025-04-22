@@ -3,7 +3,6 @@
 all: install run
 
 install:
-	pip install -r requirements.txt
 	pip install streamlit
 
 
