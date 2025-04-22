@@ -2,16 +2,22 @@
 
 
 install:
+	$(PYTHON) -m pip install --upgrade pip
+	pip install pandas numpy scikit-learn streamlit
+	pip install -r requirements.txt
 	pip install streamlit
 
 
 build:
-	@echo "No build step necessary."
+	jupyter nbconvert --to notebook --execute --inplace dataprocess.ipynb
 
-run:
+test:
 	python recommender.py --dataset dataset.csv  --song "Shape of You"  --artist "Ed Sheeran"  --n_songs 5  --metric cosine  --same_genre
 
 clean:
 	rm -rf __pycache__ *.pyc
 
-all: install run
+run:
+	streamlit run app.py
+
+all: install build
