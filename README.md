@@ -43,7 +43,9 @@ This guide explains how to set up and run the KNN-based song recommendation syst
 
 You need Python 3.7 or higher. Install the required dependencies using the following command in Terminal:
 
-``` bash pip install pandas numpy scikit-learn streamlit```
+``` bash 
+pip install pandas numpy scikit-learn streamlit
+```
 
 
 ---
