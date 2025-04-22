@@ -43,7 +43,7 @@ This guide explains how to set up and run the KNN-based song recommendation syst
 
 You need Python 3.7 or higher. Install the required dependencies using the following command in Terminal:
 
-`pip install pandas numpy scikit-learn streamlit`
+``` bash pip install pandas numpy scikit-learn streamlit```
 
 
 ---
@@ -58,13 +58,15 @@ Open and run `dataprocess.ipynb` to clean and preprocess your dataset. This note
 
 Use `recommender.py` to find similar songs from the terminal:
 
-`python recommender.py --dataset dataset.csv
---song "Shape of You"
---artist "Ed Sheeran"
---n_songs 5
---metric cosine
---same_genre
-`
+```bash
+python recommender.py --dataset dataset.csv \
+                      --song "Shape of You" \
+                      --artist "Ed Sheeran" \
+                      --n_songs 5 \
+                      --metric cosine \
+                      --same_genre
+```
+
 
 
 **Arguments:**
