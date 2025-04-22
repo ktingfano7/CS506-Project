@@ -1,10 +1,10 @@
 import app
 
-def test_main_runs_without_error():
+def test_run_main():
   try:
     app.main()
   except Exception as e:
     assert False, f"main() raised an exception: {e}"
 
-def test_has_main_function():
+def test_check_main():
   assert hasattr(app,'main'), "app.py does not have a main() function"
