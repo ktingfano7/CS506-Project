@@ -15,6 +15,8 @@ build:
 test:
 	python recommender.py --dataset dataset.csv  --song "Shape of You"  --artist "Ed Sheeran"  --n_songs 5  --metric cosine  --same_genre
 
+	python recommender.py --dataset dataset.csv  --song "Love Me Like You Do"  --artist "Ellie Goulding"  --n_songs 10  --metric euclidean  --same_genre
+
 clean:
 	rm -rf __pycache__ *.pyc
 
