@@ -112,7 +112,7 @@ Here is the PCA plot colored by 'popularity'. To better visualize the dataset, w
 
 Here is the PCA plot colored by 'genre'. PC1 and PC2 function similarily to the above graph, but the difference is:
 - **PC3** captures the variance in genre.
-![PCA by Genre](images/pc_3d_rotation.gif)
+![PCA by Genre](images/pca_3d_rotation.gif)
 
 Here is the distribution of the songs by their popularity scores:
 ![Popularity Distribution](images/popularity_distribution.png)
