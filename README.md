@@ -110,8 +110,13 @@ Here is the PCA plot colored by 'popularity'. To better visualize the dataset, w
 ![PCA by Popularity](images/pca_by_popularity.png)
 
 
-Here is the PCA plot colored by 'genre'. PC1 and PC2 function similarily to the above graph, but the difference is:
-- **PC3** captures the variance in genre.
+Here is the PCA plot colored by 'population'.
+- **PC1 (x-axis)**: Energy, loudness, acousticness
+- **PC2 (y-axis)**: Valence, danceability
+- **PC3 (z-axis)**: Remaining variance (tempo, liveness, etc.)
+
+The color represents **popularity**, with brighter dots indicating more popular tracks.
+
 ![PCA by Genre](images/pca_3d_rotation.gif)
 
 Here is the distribution of the songs by their popularity scores:
@@ -119,6 +124,13 @@ Here is the distribution of the songs by their popularity scores:
 
 Here is a chart of the top artists, which is determined by their number of tracks:
 ![Top Artists](images/top_artists.png)
+
+PCA 3D Interactive Viewer
+
+Use this interactive plot to hover, zoom, and rotate through the PCA space to explore patterns in the song dataset.
+
+![Open Interactive PCA Plot](images/pca_3d_interactive.html)
+
 
 ## Data Processing and Cleaning
 
