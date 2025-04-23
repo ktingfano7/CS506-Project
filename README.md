@@ -129,7 +129,7 @@ PCA 3D Interactive Viewer
 
 Use this interactive plot to hover, zoom, and rotate through the PCA space to explore patterns in the song dataset.
 
-![Open Interactive PCA Plot](images/pca_3d_interactive.html)
+![Download and View Interactive PCA Plot](images/pca_3d_interactive.html)
 
 
 ## Data Processing and Cleaning
