@@ -41,7 +41,7 @@ This guide explains how to set up and run the KNN-based song recommendation syst
 
 ## ✅ Requirements
 
-You need Python 3.7 or higher. Install the required dependencies using the following command in Terminal:
+You need Python 3.7 or higher. Install the required dependencies in your Terminal using the following command:
 
 ``` bash 
 pip install pandas numpy scikit-learn streamlit
@@ -73,11 +73,11 @@ python recommender.py --dataset dataset.csv \
 
 **Arguments:**
 - `--dataset`: Path to the dataset CSV
-- `--song`: Song name (exact match required)
-- `--artist`: Artist name (exact match required)
+- `--song`: Song name (Must be an exact match)
+- `--artist`: Artist name (Must be an exact match)
 - `--n_songs`: Number of similar songs to return
 - `--metric`: Distance metric (`cosine`, `euclidean`, or `manhattan`)
-- `--same_genre`: Optional flag to restrict results to the same genre
+- `--same_genre`: Optional flag to restrict recommendations to same genre
 
 ---
 
@@ -93,7 +93,7 @@ Then in the browser:
 - Select a distance metric
 - Adjust the number of recommendations
 - Optionally filter by same genre
-- Click "Get Recommendations" to see results in a table
+- Click "Get Recommendations" to view results
 
 ---
 
@@ -101,16 +101,18 @@ Then in the browser:
 
 { % include_relative images/pca_3d_interactive.html % } 
 
-Here is the feature correlation heatchart, which gives scores for the correlation in similarity between songs with specific attributes. This helps us identify which attributes are closely correlated. For example, we observe a strong correlation between 'valance' and 'danceability', suggesting that more positive songs tend to be more danceable. These are useful when we apply it to our recommendation model and do Principal Component Analysis (PCA).
+Here is the feature correlation heatchart to identify audio features that are closely correlated. For example, we observe a strong correlation between 'valance' and 'danceability', suggesting that more positive songs tend to be more danceable. These correlations are useful for feature selection in our recommendation model.
+
 ![Feature Correlation](images/feature_correlation.png)
 
-Here is the PCA plot colored by 'popularity'. To better visualize the dataset, we performed a PCA using audio-numerical features (loudness, valance, danceability, etc.). The PCA reduces these dimensions into two components:
+To better visualize song similarities, we performed a Principal Component Analysis using audio-numerical features (loudness, valance, danceability, etc.). Below is the two-dimensional PCA graph, which reduces these dimensions into two components:
 - **PC1** captures the most variance and reflects energy, loudness, and acousticness.
 - **PC2** reflects variation in valence, danceability, and duration.
+The PCA points are colored by popularity, meaning that brighter points indicate more populared tracks.
 ![PCA by Popularity](images/pca_by_popularity.png)
 
 
-Here is the PCA plot colored by 'genre'. PC1 and PC2 function similarily to the above graph, but the difference is:
+Below is the three-dimensional PCA plot colored by 'genre'. PC1 and PC2 function similarily to the above graph, but the difference is:
 - **PC3** captures the variance in genre.
 ![PCA by Genre](images/pca_3d_rotation.gif)
 
@@ -122,7 +124,7 @@ Here is a chart of the top artists, which is determined by their number of track
 
 ## Data Processing and Cleaning
 
-We chose to use a **Kaggle dataset** instead of the **Spotify API** primarily because we don’t have a database infrastructure to store large volumes of data returned by the API. If we were to manually select a subset of songs from Spotify, it could introduce bias — for instance, favoring certain genres unintentionally. This would lead to **underfitting** during model evaluation, especially for underrepresented genres or song types. Also, Spotify removed the ability for users to access data about each individual song's audio features, meaning that as of now we'd only be able to access the necessary information for our model using the Spotify API.
+We chose to use a **Kaggle dataset** over the **Spotify API** primarily due to lacking  backend infrastructure to store large-scale Spofity data. If we were to manually select a subset of songs from Spotify, it could introduce bias — for instance, favoring certain genres unintentionally. This would lead to **underfitting** during model evaluation, especially for underrepresented genres or song types. The final deciding factor in switching from the API to a datset is that last year, Spotify removed the ability for users to access data about each individual song's audio features. This means that we couldn't use the Spotify API to collect our data even if we wanted to.
 
 To avoid any difficulties, we selected the [Spotify Tracks Dataset on Kaggle](https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset), which includes around **11,000 tracks** across **125 different genres**. Each track includes multiple audio features such as danceability, energy, acousticness, and more. The data is stored in **CSV format**, making it easy to load, explore, and preprocess.
 
@@ -158,11 +160,19 @@ We used multiple techniques to model our data. We used bar charts to measure the
 --- 
 
 ## Making Predictions
-Our model used a recommender function with the KNN Model to give similar recommendations based on the song similarities; if a song isn't in the database, than the model won't return anything. The model also has a second recommender function that takes the songs' genres into account when calculating similarities. We found that using all of the available audio features resulted in the most accurate results, and so that is what our final application uses. The features are standardized using the StandardScaler, which standardizes all of the features to equivalent scales to give them equal weight when calculating similarity distances. The StandardScaler score of a sample x is calculated as z=(x-u)/s, where x is the sample, u is the mean of the training samples, and a is the standard deviation. (Whether or not genre is scaled as a feature depends on whether the user selects it or not.)
+Our model used a recommender function with the KNN Model to give similar recommendations based on the song similarities; if a song isn't in the database, than the model won't return anything. The recommender is able to calculate similarity using three distance metrics:
+- **Cosine distance**, which produced the most accurate recommendations
+- **Euclidean** and **Manhattan**, which also returned solid results.
+ The model also has a second recommender function that takes the songs' genres into account when calculating similarities. We found that using all of the available audio features resulted in the most accurate results, and so that is what our final application uses. The features are standardized using the StandardScaler, which standardizes all of the features to equivalent scales to give them equal weight when calculating similarity distances. The StandardScaler score of a sample x is calculated as 
+ $$z = \frac{x - \mu}{\sigma}$$
+ where x is the sample, u is the mean of the training samples, and a is the standard deviation. (Whether or not genre is scaled as a feature depends on whether the user selects it or not.)
 
 ## Results
 ![Bee Gees](images/bee_gees.png)
-Our final results proved to be far more accurate than our preliminary results, where we only utilized a few key features. While cosine distance yields the most accurate results, we've found that for many cases, using euclidean and manhattan distances often returns similar (if not always exact) results. And even without the genre feature turned on, the KNN audio features prove reasonably accurate at finding songs that are similar in, for instance, the decade they were released in, or songs from the same artists.
+- Our final results proved to be far more accurate than our preliminary results. There, we only used a few key audio features, whereas in our final model we used every available feature.  
+- While cosine distance yields the most accurate results, we've found that for many cases, using euclidean and manhattan distances often returns similar (if not always exact) results. 
+- Even without the genre feature turned on, the model proved reasonably accurate at recommending songs from similar artists, decades, and so forth.
+
 ![No Genre Results](images/results_nogenre.png)
 
 ---
