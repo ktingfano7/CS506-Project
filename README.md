@@ -170,6 +170,7 @@ We used multiple techniques to model our data. We used bar charts to measure the
 Our model used a recommender function with the KNN Model to give similar recommendations based on the song similarities; if a song isn't in the database, than the model won't return anything. The recommender is able to calculate similarity using three distance metrics:
 - **Cosine distance**, which produced the most accurate recommendations
 - **Euclidean** and **Manhattan**, which also returned solid results.
+
  The model also has a second recommender function that takes the songs' genres into account when calculating similarities. We found that using all of the available audio features resulted in the most accurate results, and so that is what our final application uses. The features are standardized using the StandardScaler, which standardizes all of the features to equivalent scales to give them equal weight when calculating similarity distances. The StandardScaler score of a sample x is calculated as 
  $$z = \frac{x - \mu}{\sigma}$$
  where x is the sample, u is the mean of the training samples, and a is the standard deviation. (Whether or not genre is scaled as a feature depends on whether the user selects it or not.)
