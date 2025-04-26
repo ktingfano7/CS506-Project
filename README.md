@@ -122,6 +122,13 @@ Here is the distribution of the songs by their popularity scores:
 Here is a chart of the top artists, which is determined by their number of tracks:
 ![Top Artists](images/top_artists.png)
 
+PCA 3D Interactive Viewer
+
+Use this interactive plot to hover, zoom, and rotate through the PCA space to explore patterns in the song dataset.
+
+![Download and View Interactive PCA Plot](images/pca_3d_interactive.html)
+
+
 ## Data Processing and Cleaning
 
 We chose to use a **Kaggle dataset** over the **Spotify API** primarily due to lacking  backend infrastructure to store large-scale Spofity data. If we were to manually select a subset of songs from Spotify, it could introduce bias — for instance, favoring certain genres unintentionally. This would lead to **underfitting** during model evaluation, especially for underrepresented genres or song types. The final deciding factor in switching from the API to a datset is that last year, Spotify removed the ability for users to access data about each individual song's audio features. This means that we couldn't use the Spotify API to collect our data even if we wanted to.
