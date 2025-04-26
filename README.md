@@ -85,7 +85,9 @@ python recommender.py --dataset dataset.csv \
 
 To launch the web interface, run:
 
-`streamlit run app.py`
+```bash
+streamlit run app.py
+```
 
 
 Then in the browser:
