@@ -182,8 +182,6 @@ Our model used a recommender function with the KNN Model to give similar recomme
 - We aren't trying to predict an exact number (like revenue) or classify a strict label (like "spam vs ham").
 - We just want to find songs that feel similar based on musical characteristics (like tempo, energy, danceability).
 - KNN is very natural for similarity-based tasks: it literally asks "who is close to me?", which is the task that users care about! 
-- 
-
 
 ## Results
 ![Bee Gees](images/bee_gees.png)
