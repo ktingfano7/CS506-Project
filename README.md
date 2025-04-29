@@ -177,6 +177,14 @@ Our model used a recommender function with the KNN Model to give similar recomme
  $$z = \frac{x - \mu}{\sigma}$$
  where x is the sample, u is the mean of the training samples, and a is the standard deviation. (Whether or not genre is scaled as a feature depends on whether the user selects it or not.)
 
+## Why simple KNN model would be the best compare to other complex models?
+
+- We aren't trying to predict an exact number (like revenue) or classify a strict label (like "spam vs ham").
+- We just want to find songs that feel similar based on musical characteristics (like tempo, energy, danceability).
+- KNN is very natural for similarity-based tasks: it literally asks "who is close to me?", which is the task that users care about! 
+- 
+
+
 ## Results
 ![Bee Gees](images/bee_gees.png)
 - Our final results proved to be far more accurate than our preliminary results. There, we only used a few key audio features, whereas in our final model we used every available feature.  
